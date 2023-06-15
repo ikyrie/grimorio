@@ -1,7 +1,7 @@
 class GoogleBook {
   String id;
   String title;
-  List<String> authors = [];
+  String authors;
   String description;
   String thumbnailLink;
 
@@ -17,8 +17,8 @@ class GoogleBook {
       : id = map["id"],
         title = map["volumeInfo"]["title"],
         authors = (map["volumeInfo"]["authors"] as List<dynamic>)
-            .map((e) => e.toString())
-            .toList(),
+            .map((e) => "${e.toString()},")
+            .toString(),
         description = map["volumeInfo"]["description"],
         thumbnailLink = map["volumeInfo"]["imageLinks"]?["thumbnail"];
 

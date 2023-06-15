@@ -1,16 +1,14 @@
 import 'package:grimorio/models/google_book.dart';
 
 class PersonalBook {
-  String id;
-  String idGoogle;
+  String? id; // Quem dá esse id é o SQFLITE
   DateTime dayStarted;
   DateTime dayFinished;
   String comments;
   GoogleBook googleBook;
 
   PersonalBook({
-    required this.id,
-    required this.idGoogle,
+    this.id,
     required this.dayFinished,
     required this.comments,
     required this.dayStarted,
@@ -19,7 +17,6 @@ class PersonalBook {
 
   PersonalBook.fromMap(Map<String, dynamic> map)
       : id = map["id"],
-        idGoogle = map["idGoogle"],
         dayFinished = DateTime.parse(map["dayFinished"]),
         dayStarted = DateTime.parse(map["dayStarted"]),
         comments = map["comments"],
@@ -30,7 +27,6 @@ class PersonalBook {
   Map<String, dynamic> toMap() {
     return {
       "id": id,
-      "idGoogle": idGoogle,
       "dayFinished": dayFinished.toString(),
       "dayStarted": dayStarted.toString(),
       "comments": comments,
