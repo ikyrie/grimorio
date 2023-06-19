@@ -13,33 +13,20 @@ class PrimaryButton extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: Ink(
-        width: 243,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: AppColors.buttonGradient,
-            )
-        ),
+        width: PrimaryButtonPropreties.size,
+        decoration: PrimaryButtonPropreties.boxDecoration,
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: SvgPicture.asset("assets/images/star_icon.svg"),
+              child: SvgPicture.asset(stars),
             ),
-            icon != null ? Icon(icon, color: AppColors.purple,) : Container(),
+            icon != null ? Icon(icon, color: PrimaryButtonPropreties.iconColor,) : Container(),
             Text(
               text,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(
-                    color: AppColors.purple,
-                    fontWeight: FontWeight.w600
-                  ),
+              style: PrimaryButtonPropreties.textStyle,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
