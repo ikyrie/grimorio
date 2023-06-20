@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grimorio/primary_button.dart';
+import 'package:grimorio/secondary_button.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -11,7 +12,9 @@ class Dashboard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(children: <Widget>[
-            PrimaryButton(text: "Adicionar", icon: Icons.add,),
+            PrimaryButton(text: "Entrar",),
+            PrimaryButtonIcon(text: "Adicionar", icon: Icons.add),
+            SecondaryButton(text: "Apagar", icon: Icons.delete),
           ],),
         ),
       ),
