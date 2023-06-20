@@ -12,7 +12,7 @@ class SecondaryButton extends StatelessWidget {
     const String stars = "assets/images/alternative_star_icon.svg";
     return InkWell(
       onTap: (){},
-      child: Ink(
+      child: Container(
         width: SecondaryButtonProperties.size,
         decoration: SecondaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),

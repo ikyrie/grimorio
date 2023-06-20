@@ -11,7 +11,7 @@ class PrimaryButton extends StatelessWidget {
     const String stars = "assets/images/star_icon.svg";
     return InkWell(
       onTap: (){},
-      child: Ink(
+      child: Container(
         width: PrimaryButtonProperties.size,
         decoration: PrimaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),
@@ -47,7 +47,7 @@ class PrimaryButtonIcon extends StatelessWidget {
     const String stars = "assets/images/alternative_star_icon.svg";
     return InkWell(
       onTap: (){},
-      child: Ink(
+      child: Container(
         width: PrimaryButtonProperties.size,
         decoration: PrimaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),

@@ -67,6 +67,7 @@ flutter:
     - assets/images/star_icon.svg
     - assets/images/alternative_star_icon.svg
     - assets/images/background.svg
+    - assets/images/logo.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:grimorio/primary_button.dart';
 import 'package:grimorio/secondary_button.dart';
 import 'package:grimorio/theme.dart';
@@ -10,18 +11,27 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
       decoration: AppBackgroundProperties.boxDecoration,
-      child: const Scaffold(
+      child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            padding: const EdgeInsets.all(16.0),
+            child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-              PrimaryButton(text: "Entrar",),
-              PrimaryButtonIcon(text: "Adicionar", icon: Icons.add),
-              SecondaryButton(text: "Apagar", icon: Icons.delete),
-            ],),
+                SvgPicture.asset("assets/images/background.svg"),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SvgPicture.asset("assets/images/logo.svg"),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 104.0),
+                      child: PrimaryButton(text: "Entrar"),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
