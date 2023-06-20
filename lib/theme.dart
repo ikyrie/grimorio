@@ -6,7 +6,7 @@ abstract class AppColors {
   static Color lightPink = const Color(0xffF2C5FF);
   static Color stroke = const Color(0xffA02D91);
   static List<Color> buttonGradient = const <Color>[Color(0xffFBEBFF), Color(0xffB266FF),];
-
+  static List<Color> backgroundGradient = const <Color>[Color(0xff24001F), Color(0xffA02D91),];
 }
 
 abstract class PrimaryButtonPropreties {
