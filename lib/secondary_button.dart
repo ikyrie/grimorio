@@ -13,8 +13,8 @@ class SecondaryButton extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: Ink(
-        width: SecondaryButtonPropreties.size,
-        decoration: SecondaryButtonPropreties.boxDecoration,
+        width: SecondaryButtonProperties.size,
+        decoration: SecondaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,11 +25,11 @@ class SecondaryButton extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(icon, color: SecondaryButtonPropreties.iconColor,),
+              child: Icon(icon, color: SecondaryButtonProperties.iconColor,),
             ),
             Text(
               text,
-              style: SecondaryButtonPropreties.textStyle,
+              style: SecondaryButtonProperties.textStyle,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),

@@ -5,11 +5,17 @@ abstract class AppColors {
   static Color darkPurple = const Color(0xff2B0626);
   static Color lightPink = const Color(0xffF2C5FF);
   static Color stroke = const Color(0xffA02D91);
-  static List<Color> buttonGradient = const <Color>[Color(0xffFBEBFF), Color(0xffB266FF),];
-  static List<Color> backgroundGradient = const <Color>[Color(0xff24001F), Color(0xffA02D91),];
+  static List<Color> buttonGradient = const <Color>[
+    Color(0xffFBEBFF),
+    Color(0xffB266FF),
+  ];
+  static List<Color> backgroundGradient = const <Color>[
+    Color(0xff24001F),
+    Color(0xffA02D91),
+  ];
 }
 
-abstract class PrimaryButtonPropreties {
+abstract class PrimaryButtonProperties {
   static double size = 243;
   static TextStyle textStyle = TextStyle(
     fontSize: 16,
@@ -18,17 +24,16 @@ abstract class PrimaryButtonPropreties {
   );
   static Color iconColor = AppColors.purple;
   static BoxDecoration boxDecoration = BoxDecoration(
-            boxShadow: kElevationToShadow[6],
-            borderRadius: BorderRadius.circular(30),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: AppColors.buttonGradient,
-            )
-        );
+      boxShadow: kElevationToShadow[6],
+      borderRadius: BorderRadius.circular(30),
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: AppColors.buttonGradient,
+      ));
 }
 
-abstract class SecondaryButtonPropreties {
+abstract class SecondaryButtonProperties {
   static double size = 243;
   static TextStyle textStyle = TextStyle(
     fontSize: 16,
@@ -37,7 +42,16 @@ abstract class SecondaryButtonPropreties {
   );
   static Color iconColor = AppColors.lightPink;
   static BoxDecoration boxDecoration = BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: AppColors.stroke)
-        );
+      borderRadius: BorderRadius.circular(30),
+      border: Border.all(color: AppColors.stroke));
+}
+
+abstract class AppBackgroundProperties {
+  static BoxDecoration boxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: AppColors.backgroundGradient,
+    ),
+  );
 }

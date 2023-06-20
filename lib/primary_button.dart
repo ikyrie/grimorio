@@ -12,8 +12,8 @@ class PrimaryButton extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: Ink(
-        width: PrimaryButtonPropreties.size,
-        decoration: PrimaryButtonPropreties.boxDecoration,
+        width: PrimaryButtonProperties.size,
+        decoration: PrimaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +24,7 @@ class PrimaryButton extends StatelessWidget {
             ),
             Text(
               text,
-              style: PrimaryButtonPropreties.textStyle,
+              style: PrimaryButtonProperties.textStyle,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -48,8 +48,8 @@ class PrimaryButtonIcon extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: Ink(
-        width: PrimaryButtonPropreties.size,
-        decoration: PrimaryButtonPropreties.boxDecoration,
+        width: PrimaryButtonProperties.size,
+        decoration: PrimaryButtonProperties.boxDecoration,
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -60,11 +60,11 @@ class PrimaryButtonIcon extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(icon, color: PrimaryButtonPropreties.iconColor,),
+              child: Icon(icon, color: PrimaryButtonProperties.iconColor,),
             ),
             Text(
               text,
-              style: PrimaryButtonPropreties.textStyle,
+              style: PrimaryButtonProperties.textStyle,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),

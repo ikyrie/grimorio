@@ -9,19 +9,15 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: AppColors.backgroundGradient,
-        ),
-      ),
+      decoration: AppBackgroundProperties.boxDecoration,
       child: const Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(16.0),
-            child: Column(children: <Widget>[
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
               PrimaryButton(text: "Entrar",),
               PrimaryButtonIcon(text: "Adicionar", icon: Icons.add),
               SecondaryButton(text: "Apagar", icon: Icons.delete),
