@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grimorio/login.dart';
 import 'package:grimorio/primary_button.dart';
 import 'package:grimorio/theme.dart';
 
@@ -23,9 +24,11 @@ class Dashboard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SvgPicture.asset("assets/images/logo.svg"),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 104.0),
-                      child: PrimaryButton(text: "Entrar"),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 104.0),
+                      child: PrimaryButton(text: "Entrar", onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login(),));
+                      },),
                     ),
                   ],
                 )

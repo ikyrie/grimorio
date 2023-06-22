@@ -3,14 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:grimorio/theme.dart'; 
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({super.key, required this.text});
+  const PrimaryButton({super.key, required this.text, required this.onTap});
   final String text;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     const String stars = "assets/images/star_icon.svg";
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         width: PrimaryButtonProperties.size,
         decoration: PrimaryButtonProperties.boxDecoration,
@@ -38,15 +39,16 @@ class PrimaryButton extends StatelessWidget {
 }
 
 class PrimaryButtonIcon extends StatelessWidget {
-  const PrimaryButtonIcon({super.key, required this.text, required this.icon});
+  const PrimaryButtonIcon({super.key, required this.text, required this.icon, required this.onTap});
   final String text;
   final IconData icon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     const String stars = "assets/images/alternative_star_icon.svg";
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         width: PrimaryButtonProperties.size,
         decoration: PrimaryButtonProperties.boxDecoration,

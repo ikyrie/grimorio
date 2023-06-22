@@ -13,7 +13,7 @@ class Grimorio extends StatelessWidget {
     return MaterialApp(
       title: "Grimório",
       theme: ThemeData.dark(useMaterial3: true),
-      home: Dashboard(),
+      home: const Dashboard(),
     );
   }
 }
