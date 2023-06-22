@@ -9,7 +9,9 @@ class DisplayText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: <Widget>[
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: SvgPicture.asset(asset),
