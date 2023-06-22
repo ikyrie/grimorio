@@ -55,3 +55,7 @@ abstract class AppBackgroundProperties {
     ),
   );
 }
+
+abstract class DisplayTextProperties {
+  static TextStyle textStyle = const TextStyle(fontFamily: "Bigelow Rules", fontSize: 36);
+}
