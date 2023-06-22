@@ -75,15 +75,11 @@ abstract class InputDecorationProperties {
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        gapPadding: 0,
         borderSide: BorderSide(
           color: AppColors.stroke,
         ),
       ),
       labelText: labelText,
-      labelStyle: TextStyle(
-        backgroundColor: AppColors.stroke,
-      ),
     );
   }
 }
