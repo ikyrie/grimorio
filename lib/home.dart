@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grimorio/display_text.dart';
 import 'package:grimorio/floating_button.dart';
+import 'package:grimorio/new_entry.dart';
 import 'package:grimorio/theme.dart';
 
 class Home extends StatefulWidget {
@@ -50,7 +51,7 @@ class _EmptyHome extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 40.0),
         child: Text("Vamos aprender algo novo?", style: TextStyle(fontWeight: FontWeight.w500),),
       ),
-      FloatingButton(onTap: (){}),
+      FloatingButton(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntry()));}),
     ]);
   }
 }

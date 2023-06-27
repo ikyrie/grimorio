@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 abstract class AppColors {
   static Color white = const Color(0xffFFFFFF);
+  static Color black = const Color(0xff000000);
   static Color purple = const Color(0xff6C0D60);
   static Color darkPurple = const Color(0xff2B0626);
   static Color mediumPink = const Color(0xffCB6CE6);
@@ -80,11 +80,18 @@ abstract class DisplayTextProperties {
   static TextStyle textStyle = const TextStyle(fontFamily: "Bigelow Rules", fontSize: 36);
 }
 
+abstract class EntryDecorationProperties {
+  static TextStyle displayText = const TextStyle(fontSize: 16);
+  static TextStyle authorText = TextStyle(fontWeight: FontWeight.w500, color: AppColors.lightPink);
+}
+
 abstract class InputDecorationProperties {
   static TextStyle textDecoration = TextStyle(color: AppColors.mediumPink);
 
-  static InputDecoration newInputDecoration(String hintText, String labelText) {
+  static InputDecoration newInputDecoration(String hintText, String labelText, [Icon? icon]) {
     return InputDecoration(
+      prefixIcon: icon,
+      prefixIconColor: AppColors.mediumPink,
       hintStyle: TextStyle(color: AppColors.mediumPink),
       hintText: hintText,
       enabledBorder: OutlineInputBorder(
