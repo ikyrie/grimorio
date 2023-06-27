@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grimorio/display_text.dart';
 import 'package:grimorio/primary_button.dart';
+import 'package:grimorio/sign_up.dart';
 import 'package:grimorio/theme.dart';
 
 class Login extends StatefulWidget {
@@ -79,7 +80,12 @@ class _LoginState extends State<Login> {
                                     fixedSize: const Size.fromWidth(246),
                                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Signup()));
+                                  },
                                   child: Text(
                                     "Cadastre-se",
                                     style: TextStyle(
