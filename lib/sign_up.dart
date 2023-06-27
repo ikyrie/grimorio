@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grimorio/display_text.dart';
-import 'package:grimorio/login.dart';
 import 'package:grimorio/primary_button.dart';
 import 'package:grimorio/theme.dart';
 
@@ -23,8 +22,8 @@ class _SignupState extends State<Signup> {
         body: Center(
           child: SingleChildScrollView(
             child: Column(children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 16.0),
                 child: DisplayText("Cadastre-se"),
               ),
                 SizedBox(
