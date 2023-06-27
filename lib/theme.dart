@@ -48,6 +48,24 @@ abstract class SecondaryButtonProperties {
       border: Border.all(color: AppColors.stroke));
 }
 
+abstract class FloatingButtonProperties {
+  static double size = 56;
+  static TextStyle textStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.purple,
+  );
+  static Color iconColor = AppColors.purple;
+  static BoxDecoration boxDecoration = BoxDecoration(
+      boxShadow: kElevationToShadow[6],
+      borderRadius: BorderRadius.circular(16),
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: AppColors.buttonGradient,
+      ));
+}
+
 abstract class AppBackgroundProperties {
   static BoxDecoration boxDecoration = BoxDecoration(
     gradient: LinearGradient(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grimorio/display_text.dart';
+import 'package:grimorio/home.dart';
 import 'package:grimorio/primary_button.dart';
 import 'package:grimorio/sign_up.dart';
 import 'package:grimorio/theme.dart';
@@ -72,7 +73,9 @@ class _LoginState extends State<Login> {
                                   ),
                                 ),
                               ),
-                              PrimaryButton(text: "Entrar", onTap: (){}),
+                              PrimaryButton(text: "Entrar", onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+                              }),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
                                 child: TextButton(
