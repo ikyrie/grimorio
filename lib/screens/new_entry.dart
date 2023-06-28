@@ -38,8 +38,6 @@ class _NewEntryState extends State<NewEntry> {
                         padding: EdgeInsets.only(bottom: 24.0),
                         child: Text(
                           "Very words so I can test the ammount of words I can put in here until the modal breaks. I need this test also to test if I can put an scrollable action. If I can't put a scrollable action here I'm in big trouble. Please let me put a scroll into a Dialog.",
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Form(

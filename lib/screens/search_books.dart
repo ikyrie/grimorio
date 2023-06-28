@@ -34,7 +34,7 @@ class _SearchBooksState extends State<SearchBooks> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: TextFormField(
-                    decoration: InputDecorationProperties.newInputDecoration("Procure um título", "Título", const Icon(Icons.search)),
+                    decoration: InputDecorationProperties.newInputDecoration("Procure por título/autor(a)", "Busca", const Icon(Icons.search)),
                   ),
                 ),
               ),
