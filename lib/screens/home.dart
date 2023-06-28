@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grimorio/display_text.dart';
-import 'package:grimorio/floating_button.dart';
-import 'package:grimorio/new_entry.dart';
+import 'package:grimorio/screens/components/display_text.dart';
+import 'package:grimorio/screens/components/floating_button.dart';
+import 'package:grimorio/screens/new_entry.dart';
 import 'package:grimorio/theme.dart';
 
 class Home extends StatefulWidget {

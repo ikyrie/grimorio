@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grimorio/display_text.dart';
-import 'package:grimorio/entry.dart';
+import 'package:grimorio/screens/components/display_text.dart';
+import 'package:grimorio/screens/components/entry.dart';
 import 'package:grimorio/theme.dart';
 
 class NewEntry extends StatefulWidget {
