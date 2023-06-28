@@ -4,14 +4,14 @@ import 'package:grimorio/screens/components/entry.dart';
 import 'package:grimorio/screens/components/primary_button.dart';
 import 'package:grimorio/theme.dart';
 
-class NewEntry extends StatefulWidget {
-  const NewEntry({super.key});
+class SearchBooks extends StatefulWidget {
+  const SearchBooks({super.key});
 
   @override
-  State<NewEntry> createState() => _NewEntryState();
+  State<SearchBooks> createState() => _SearchBooksState();
 }
 
-class _NewEntryState extends State<NewEntry> {
+class _SearchBooksState extends State<SearchBooks> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
