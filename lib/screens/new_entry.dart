@@ -19,12 +19,12 @@ class _NewEntryState extends State<NewEntry> {
         appBar: AppBar(backgroundColor: AppColors.black),
         backgroundColor: Colors.transparent,
         body: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: CustomScrollView(
             slivers: <Widget>[
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 32.0),
+                  padding: EdgeInsets.only(bottom: 32.0),
                   child: DisplayText("Adicionar Livro"),
                 ),
               ),
@@ -32,21 +32,21 @@ class _NewEntryState extends State<NewEntry> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: TextFormField(
-                    decoration: InputDecorationProperties.newInputDecoration("Procure um título", "Título", Icon(Icons.search)),
+                    decoration: InputDecorationProperties.newInputDecoration("Procure um título", "Título", const Icon(Icons.search)),
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 32.0),
+                    padding: EdgeInsets.only(bottom: 32.0),
                     child: Text("3 resultados"),
                   ),
                 ),
               ),
               SliverList.builder(
-                itemBuilder: (context, index) => Entry(),
+                itemBuilder: (context, index) => const Entry(),
                 itemCount: 10,
               ),
             ],
