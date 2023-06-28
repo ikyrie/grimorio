@@ -61,6 +61,20 @@ class _NewEntryState extends State<NewEntry> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    InkWell(
+                                      child: const Icon(Icons.close),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 24.0),
                                 child: DisplayText("Detalhes do Livro"),
