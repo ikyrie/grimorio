@@ -15,6 +15,11 @@ abstract class AppColors {
     Color(0xff24001F),
     Color(0xffA02D91),
   ];
+  static List<Color> modalBackgroundGradient = const <Color> [
+    Color.fromARGB(255, 16, 2, 14),
+    Color.fromARGB(255, 16, 2, 14),
+    Color.fromARGB(255, 77, 18, 69),
+  ];
 }
 
 abstract class PrimaryButtonProperties {
@@ -72,6 +77,22 @@ abstract class AppBackgroundProperties {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: AppColors.backgroundGradient,
+    ),
+  );
+}
+
+abstract class ModalDecorationProperties {
+  static TextStyle bookTitle = const TextStyle(fontSize: 22);
+  static TextStyle bookAuthor = TextStyle(fontSize: 16, color: AppColors.lightPink,);
+  static RoundedRectangleBorder modalBorder = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(30),
+    side: BorderSide(color: AppColors.stroke),
+  );
+  static BoxDecoration boxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: AppColors.modalBackgroundGradient,
     ),
   );
 }
