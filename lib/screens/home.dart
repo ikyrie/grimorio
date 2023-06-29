@@ -15,17 +15,88 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Container(
+    return SafeArea(
+        child: Container(
       decoration: AppBackgroundProperties.boxDecoration,
       child: const Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
-          child: SingleChildScrollView(
-            child: _EmptyHome(),
-          ),
+          child: _FilledHome(),
         ),
       ),
     ));
+  }
+}
+
+class _FilledHome extends StatelessWidget {
+  const _FilledHome({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+          child: CustomScrollView(
+            shrinkWrap: true,
+            slivers: <Widget>[
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 48.0, 0.0, 8.0),
+                  child: DisplayText("Grimório"),
+                ),
+              ),
+              SliverGrid.builder(
+                itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisExtent: 167,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) => InkWell(
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Container()));},
+                  child: Image.network(
+                    "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
+                    height: 220,
+                    width: 144,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            height: 72,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.center,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Color(0x00000000),
+                  Color(0xFF000000),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: MediaQuery.of(context).size.height - 100,
+          left: MediaQuery.of(context).size.width/2 - 44,
+          child: FloatingButton(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SearchBooks()));
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -34,7 +105,9 @@ class _EmptyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
       const Padding(
         padding: EdgeInsets.only(bottom: 32.0),
         child: DisplayText("Grimório"),
