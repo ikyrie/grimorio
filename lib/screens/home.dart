@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grimorio/screens/book_details.dart';
 import 'package:grimorio/screens/components/display_text.dart';
 import 'package:grimorio/screens/components/floating_button.dart';
 import 'package:grimorio/screens/search_books.dart';
@@ -57,7 +58,7 @@ class _FilledHome extends StatelessWidget {
                   crossAxisSpacing: 16,
                 ),
                 itemBuilder: (context, index) => InkWell(
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Container()));},
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BookDetails()));},
                   child: Image.network(
                     "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
                     height: 220,
