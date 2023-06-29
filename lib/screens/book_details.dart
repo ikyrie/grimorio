@@ -69,8 +69,8 @@ class BookDetails extends StatelessWidget {
                       Text("Inicio da Leitura", style: TextStyle(color: AppColors.mediumPink),),
                     ],),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
                     child: Row(children: <Widget>[Text("08/11/2023", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
                   ),
                   Padding(
@@ -83,8 +83,8 @@ class BookDetails extends StatelessWidget {
                       Text("Final da Leitura", style: TextStyle(color: AppColors.mediumPink),),
                     ],),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 16.0),
                     child: Row(children: <Widget>[Text("08/12/2023", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
                   ),
                   Padding(
@@ -95,8 +95,8 @@ class BookDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 32.0),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 32.0),
                     child: Text('"1984" de George Orwell é uma obra-prima distópica que continua a ser relevante. Sua representação sombria de um estado totalitário é assustadoramente realista e serve como um lembrete sobre o poder da manipulação e vigilância governamental. É um livro impactante que nos faz refletir sobre os perigos da perda da liberdade e da manipulação da verdade.'),
                   ),
                   Padding(

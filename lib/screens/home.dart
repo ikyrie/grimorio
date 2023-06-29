@@ -58,7 +58,7 @@ class _FilledHome extends StatelessWidget {
                   crossAxisSpacing: 16,
                 ),
                 itemBuilder: (context, index) => InkWell(
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BookDetails()));},
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const BookDetails()));},
                   child: Image.network(
                     "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
                     height: 220,
@@ -92,7 +92,7 @@ class _FilledHome extends StatelessWidget {
           left: MediaQuery.of(context).size.width/2 - 44,
           child: FloatingButton(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SearchBooks()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchBooks()));
             },
           ),
         ),
