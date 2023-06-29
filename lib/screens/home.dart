@@ -75,16 +75,7 @@ class _FilledHome extends StatelessWidget {
           child: Container(
             height: 72,
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.center,
-                end: Alignment.bottomCenter,
-                colors: <Color>[
-                  Color(0x00000000),
-                  Color(0xFF000000),
-                ],
-              ),
-            ),
+            decoration: HomeShadowProperties.boxDecoration,
           ),
         ),
         Positioned(

@@ -16,9 +16,13 @@ abstract class AppColors {
     Color(0xffA02D91),
   ];
   static List<Color> modalBackgroundGradient = const <Color> [
-    Color.fromARGB(255, 16, 2, 14),
-    Color.fromARGB(255, 16, 2, 14),
-    Color.fromARGB(255, 77, 18, 69),
+    Color(0xFF10020E),
+    Color(0xFF10020E),
+    Color(0xFF4D1245),
+  ];
+  static List<Color> homeShadowGradient = const <Color> [
+    Color(0x00000000),
+    Color(0xFF000000),
   ];
 }
 
@@ -50,7 +54,7 @@ abstract class SecondaryButtonProperties {
   static Color iconColor = AppColors.lightPink;
   static BoxDecoration boxDecoration = BoxDecoration(
       borderRadius: BorderRadius.circular(30),
-      border: Border.all(color: AppColors.stroke));
+      border: Border.all(color: AppColors.lightPink));
 }
 
 abstract class FloatingButtonProperties {
@@ -128,4 +132,14 @@ abstract class InputDecorationProperties {
       labelText: labelText,
     );
   }
+}
+
+abstract class HomeShadowProperties {
+  static BoxDecoration boxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.center,
+      end: Alignment.bottomCenter,
+      colors: AppColors.homeShadowGradient,
+    ),
+  );
 }
