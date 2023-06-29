@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grimorio/screens/components/secondary_button.dart';
+import 'package:grimorio/screens/edit_details.dart';
 
 import '../theme.dart';
 import 'components/display_text.dart';
@@ -106,7 +107,7 @@ class BookDetails extends StatelessWidget {
                       text: "Editar",
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Container()));
+                            MaterialPageRoute(builder: (context) => EditDetails()));
                       },
                     ),
                   ),
