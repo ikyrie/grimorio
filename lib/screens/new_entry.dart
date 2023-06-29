@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/screens/components/date_input.dart';
 import 'package:grimorio/screens/components/display_text.dart';
 import 'package:grimorio/screens/components/entry.dart';
 import 'package:grimorio/screens/components/primary_button.dart';
@@ -13,6 +14,8 @@ class NewEntry extends StatefulWidget {
 
 class _NewEntryState extends State<NewEntry> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController initialDateController = TextEditingController();
+  final TextEditingController finalDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,24 +49,11 @@ class _NewEntryState extends State<NewEntry> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 16.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.datetime,
-                                decoration:
-                                  InputDecorationProperties.newInputDecoration(
-                                  "",
-                                  "Início da Leitura",
-                                ),
-                              ),
+                              child: DateInput(textController: initialDateController, label: "Início da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
-                              child: TextFormField(
-                                decoration:
-                                  InputDecorationProperties.newInputDecoration(
-                                  "",
-                                  "Final da Leitura",
-                                ),
-                              ),
+                              child: DateInput(textController: finalDateController, label: "Final da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
