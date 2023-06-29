@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/screens/components/date_input.dart';
 
 import '../theme.dart';
 import 'components/display_text.dart';
@@ -14,6 +15,8 @@ class EditDetails extends StatefulWidget {
 
 class _EditDetailsState extends State<EditDetails> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController initialDateController = TextEditingController();
+  final TextEditingController finalDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +44,11 @@ class _EditDetailsState extends State<EditDetails> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 16.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.datetime,
-                                decoration:
-                                  InputDecorationProperties.newInputDecoration(
-                                  "",
-                                  "Início da Leitura",
-                                ),
-                              ),
+                              child: DateInput(textController: initialDateController, label: "Início da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
-                              child: TextFormField(
-                                decoration:
-                                  InputDecorationProperties.newInputDecoration(
-                                  "",
-                                  "Final da Leitura",
-                                ),
-                              ),
+                              child: DateInput(textController: finalDateController, label: "Final da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
