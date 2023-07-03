@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
       child: const Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
-          child: _FilledHome(),
+          child: _EmptyHome(),
         ),
       ),
     ));
@@ -116,7 +116,10 @@ class _EmptyHome extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 40.0),
         child: Text("Vamos aprender algo novo?", style: TextStyle(fontWeight: FontWeight.w500),),
       ),
-      FloatingButton(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchBooks()));}),
+      FloatingButton(onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const SearchBooks()));
+      }),
     ]);
   }
 }

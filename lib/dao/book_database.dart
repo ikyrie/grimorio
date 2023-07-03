@@ -3,7 +3,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import '../../models/personal_book.dart';
+import '../models/personal_book.dart';
 
 class PersonalBookDatabase {
   static const String _tableName = "bookTable";
