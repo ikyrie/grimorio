@@ -37,7 +37,7 @@ class _EditDetailsState extends State<EditDetails> {
                   width: 244,
                   child: Column(
                     children: <Widget>[
-                      const Entry(),
+                      // const Entry(),
                       Form(
                         key: _formKey,
                         child: Column(

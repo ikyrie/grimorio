@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/models/google_book.dart';
 import 'package:grimorio/screens/components/display_text.dart';
 import 'package:grimorio/screens/components/entry.dart';
 import 'package:grimorio/screens/components/primary_button.dart';
 import 'package:grimorio/screens/new_entry.dart';
+import 'package:grimorio/services/google_book_service.dart';
 import 'package:grimorio/theme.dart';
 
 class SearchBooks extends StatefulWidget {
@@ -13,6 +15,9 @@ class SearchBooks extends StatefulWidget {
 }
 
 class _SearchBooksState extends State<SearchBooks> {
+  final GoogleBooksService googleBooksService = GoogleBooksService();
+  Future<List<GoogleBook>>? booksList;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
@@ -32,22 +37,50 @@ class _SearchBooksState extends State<SearchBooks> {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 32.0),
                   child: TextFormField(
+                    onChanged: (value){
+                      setState(() {
+                        booksList = googleBooksService.searchBooks(value);
+                      });
+                    },
                     decoration: InputDecorationProperties.newInputDecoration("Procure por título/autor(a)", "Busca", const Icon(Icons.search)),
                   ),
                 ),
               ),
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 32.0),
-                    child: Text("3 resultados"),
-                  ),
-                ),
-              ),
-              SliverList.builder(
+              (booksList == null) ? const SliverToBoxAdapter() : _BooksList(future: booksList),
+            ],
+          ),
+        ),
+
+      ),
+    ));
+  }
+}
+
+class _BooksList extends StatelessWidget {
+  const _BooksList({super.key, required this.future});
+
+  final Future<List<GoogleBook>>? future;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: future,
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            break;
+
+          case ConnectionState.waiting:
+            return const SliverFillRemaining(child: Center(child: CircularProgressIndicator()),);
+          
+          case ConnectionState.active:
+            break;
+
+          case ConnectionState.done:
+            if(snapshot.hasData || snapshot.data != []) {
+              return SliverList.builder(
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
                     showDialog(
@@ -82,8 +115,7 @@ class _SearchBooksState extends State<SearchBooks> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 16.0),
-                                child: Image.network(
-                                  "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
+                                child: Image.network(snapshot.data![index].thumbnailLink,
                                   height: 220,
                                   width: 144,
                                   fit: BoxFit.cover,
@@ -91,8 +123,7 @@ class _SearchBooksState extends State<SearchBooks> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  "Singer and dancer at Twice. Very talented and sweet person.",
+                                child: Text(snapshot.data![index].title,
                                   style: ModalDecorationProperties.bookTitle,
                                 ),
                               ),
@@ -100,16 +131,14 @@ class _SearchBooksState extends State<SearchBooks> {
                                 padding: const EdgeInsets.only(bottom: 16.0),
                                 child: SizedBox(
                                   width: double.maxFinite,
-                                  child: Text(
-                                    "Jihyo",
+                                  child: Text(snapshot.data![index].authors,
                                     style: ModalDecorationProperties.bookAuthor,
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 24.0),
-                                child: Text(
-                                  "Very words so I can test the ammount of words I can put in here until the modal breaks. I need this test also to test if I can put an scrollable action. If I can't put a scrollable action here I'm in big trouble. Please let me put a scroll into a Dialog.",
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 24.0),
+                                child: Text(snapshot.data![index].description,
                                   maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -123,15 +152,17 @@ class _SearchBooksState extends State<SearchBooks> {
                       ),
                     );
                   },
-                  child: const Entry(),
+                  child: Entry(book: snapshot.data![index]),
                 ),
-                itemCount: 10,
-              ),
-            ],
-          ),
-        ),
-
-      ),
-    ));
+                itemCount: snapshot.data!.length,
+              );
+            }
+            break;
+        }
+        return const SliverToBoxAdapter();
+      },
+    );
   }
 }
+
+
