@@ -39,7 +39,9 @@ class _DateInputState extends State<DateInput> {
       lastDate: DateTime.now(),
     );
     setState(() {
-      textController.text = "${selectedDate!.day}/${selectedDate.month}/${selectedDate.year}";
+      if(selectedDate != null){
+        textController.text = "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+      }
     });
   }
 }

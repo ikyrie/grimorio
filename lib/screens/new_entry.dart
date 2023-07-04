@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/controllers/book_controller.dart';
 import 'package:grimorio/models/google_book.dart';
 import 'package:grimorio/screens/components/date_input.dart';
 import 'package:grimorio/screens/components/display_text.dart';
@@ -19,6 +20,8 @@ class _NewEntryState extends State<NewEntry> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController initialDateController = TextEditingController();
   final TextEditingController finalDateController = TextEditingController();
+  final TextEditingController commentsController = TextEditingController();
+  final BookController bookController = BookController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,7 @@ class _NewEntryState extends State<NewEntry> {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
                               child: TextFormField(
+                                controller: commentsController,
                                 decoration:
                                   InputDecorationProperties.newInputDecoration(
                                   "",
@@ -69,7 +73,9 @@ class _NewEntryState extends State<NewEntry> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 40.0),
-                              child: PrimaryButton(text: "Adicionar", onTap: () {}),
+                              child: PrimaryButton(text: "Adicionar", onTap: () {
+                                bookController.addBook(widget.googleBook, initialDateController.text, finalDateController.text, commentsController.text);
+                              }),
                             ),
                           ],
                         ),

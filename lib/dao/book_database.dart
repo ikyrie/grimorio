@@ -11,24 +11,15 @@ class PersonalBookDatabase {
   static const String _dayStarted = "dayStarted";
   static const String _dayFinished = "dayFinished";
   static const String _comments = "comments";
-  static const String _googleId = "googleId";
-  static const String _title = "title";
-  static const String _authors = "authors";
-  static const String _description = "description";
-  static const String _thumbnailLink = "thumbnailLink";
-  static const String _content = "content";
-
+  static const String _googleBook = "googleBook";
+ 
   static const String createTableSQL =
       // ignore: prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings
       "CREATE TABLE $_tableName($_id INTEGER NOT NULL PRIMARY KEY," +
           "$_dayStarted TEXT," +
           "$_dayFinished TEXT," +
           "$_comments TEXT," +
-          "$_googleId TEXT," +
-          "$_authors TEXT," +
-          "$_description TEXT," +
-          "$_thumbnailLink TEXT," +
-          "$_content TEXT," +
+          "$_googleBook TEXT" +
           ")";
 
   Future<Database> _getDatabase() async {
@@ -92,10 +83,6 @@ class PersonalBookDatabase {
       return result[0];
     }
     throw PersonalBookNotFindException();
-  }
-
-  Future<List<PersonalBook>> findByTitle(String title) async {
-    return await _find(_title, title);
   }
 
   Future<void> delete(PersonalBook book) async {
