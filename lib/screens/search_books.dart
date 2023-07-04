@@ -144,7 +144,7 @@ class _BooksList extends StatelessWidget {
                                 ),
                               ),
                               PrimaryButton(text: "Adicionar livro", onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const NewEntry()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntry(googleBook: snapshot.data![index],)));
                               })
                             ],
                           ),

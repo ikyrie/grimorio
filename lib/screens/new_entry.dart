@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/models/google_book.dart';
 import 'package:grimorio/screens/components/date_input.dart';
 import 'package:grimorio/screens/components/display_text.dart';
 import 'package:grimorio/screens/components/entry.dart';
@@ -6,7 +7,9 @@ import 'package:grimorio/screens/components/primary_button.dart';
 import 'package:grimorio/theme.dart';
 
 class NewEntry extends StatefulWidget {
-  const NewEntry({super.key});
+  const NewEntry({super.key, required this.googleBook});
+
+  final GoogleBook googleBook;
 
   @override
   State<NewEntry> createState() => _NewEntryState();
@@ -36,12 +39,10 @@ class _NewEntryState extends State<NewEntry> {
                   width: 244,
                   child: Column(
                     children: <Widget>[
-                      // const Entry(),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 24.0),
-                        child: Text(
-                          "Very words so I can test the ammount of words I can put in here until the modal breaks. I need this test also to test if I can put an scrollable action. If I can't put a scrollable action here I'm in big trouble. Please let me put a scroll into a Dialog.",
-                        ),
+                      Entry(book: widget.googleBook),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 24.0),
+                        child: Text(widget.googleBook.description),
                       ),
                       Form(
                         key: _formKey,
