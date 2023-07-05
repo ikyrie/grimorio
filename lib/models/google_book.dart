@@ -13,12 +13,20 @@ class GoogleBook {
     required this.thumbnailLink,
   });
 
-  GoogleBook.fromMap(Map<String, dynamic> map) {
+  GoogleBook.fromApi(Map<String, dynamic> map) {
     id = map["id"];
     title = validateTitle(map);
     authors = validateAuthors(map);
     description = validateDescription(map);
     thumbnailLink = validateThumbnail(map);
+  }
+
+  GoogleBook.fromJson(Map<String, dynamic> map){
+    id = map['id'];
+    title = map['title'];
+    authors = map['authors'];
+    description = map['description'];
+    thumbnailLink = map['thumbnailLink'];
   }
 
   validateTitle(Map<String, dynamic> map) => (map["volumeInfo"]["title"] == null) ? "Título desconhecido" : map["volumeInfo"]["title"];

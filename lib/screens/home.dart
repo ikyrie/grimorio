@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grimorio/screens/book_details.dart';
-import 'package:grimorio/screens/components/display_text.dart';
-import 'package:grimorio/screens/components/floating_button.dart';
-import 'package:grimorio/screens/search_books.dart';
-import 'package:grimorio/theme.dart';
+
+import '../controllers/book_controller.dart';
+import '../models/personal_book.dart';
+import '../theme.dart';
+import 'book_details.dart';
+import 'components/display_text.dart';
+import 'components/floating_button.dart';
+import 'search_books.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,15 +17,42 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final BookController bookController = BookController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
       decoration: AppBackgroundProperties.boxDecoration,
-      child: const Scaffold(
+      child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
-          child: _EmptyHome(),
+          child: FutureBuilder(
+            future: bookController.getBooks(),
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                  break;
+                case ConnectionState.waiting:
+                  return const CircularProgressIndicator();
+                case ConnectionState.active:
+                  break;
+                case ConnectionState.done:
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                    return _FilledHome(listPersonalBook: snapshot.data!);
+                  }
+                  break;
+                default:
+                  break;
+              }
+              return const _EmptyHome();
+            },
+          ),
         ),
       ),
     ));
@@ -30,9 +60,9 @@ class _HomeState extends State<Home> {
 }
 
 class _FilledHome extends StatelessWidget {
-  const _FilledHome({
-    super.key,
-  });
+  const _FilledHome({required this.listPersonalBook});
+
+  final List<PersonalBook> listPersonalBook;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +71,6 @@ class _FilledHome extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
           child: CustomScrollView(
-            shrinkWrap: true,
             slivers: <Widget>[
               const SliverToBoxAdapter(
                 child: Padding(
@@ -50,7 +79,7 @@ class _FilledHome extends StatelessWidget {
                 ),
               ),
               SliverGrid.builder(
-                itemCount: 10,
+                itemCount: listPersonalBook.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisExtent: 167,
@@ -58,9 +87,14 @@ class _FilledHome extends StatelessWidget {
                   crossAxisSpacing: 16,
                 ),
                 itemBuilder: (context, index) => InkWell(
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const BookDetails()));},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BookDetails()));
+                  },
                   child: Image.network(
-                    "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
+                    listPersonalBook[index].googleBook.thumbnailLink,
                     height: 220,
                     width: 144,
                     fit: BoxFit.cover,
@@ -79,11 +113,12 @@ class _FilledHome extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height - 100,
-          left: MediaQuery.of(context).size.width/2 - 44,
+          top: MediaQuery.of(context).size.height - 125,
+          left: MediaQuery.of(context).size.width / 2 - 28,
           child: FloatingButton(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchBooks()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SearchBooks()));
             },
           ),
         ),
@@ -97,9 +132,7 @@ class _EmptyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
+    return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       const Padding(
         padding: EdgeInsets.only(bottom: 32.0),
         child: DisplayText("Grimório"),
@@ -110,11 +143,20 @@ class _EmptyHome extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
-        child: Text("Seu Grimório está vazio!", style: TextStyle(fontFamily: "Bigelow Rules", fontSize: 36, color: AppColors.lightPink),),
+        child: Text(
+          "Seu Grimório está vazio!",
+          style: TextStyle(
+              fontFamily: "Bigelow Rules",
+              fontSize: 36,
+              color: AppColors.lightPink),
+        ),
       ),
       const Padding(
         padding: EdgeInsets.only(bottom: 40.0),
-        child: Text("Vamos aprender algo novo?", style: TextStyle(fontWeight: FontWeight.w500),),
+        child: Text(
+          "Vamos aprender algo novo?",
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
       ),
       FloatingButton(onTap: () {
         Navigator.push(context,
