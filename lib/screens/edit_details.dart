@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/models/personal_book.dart';
 import 'package:grimorio/screens/components/date_input.dart';
 
 import '../theme.dart';
@@ -7,7 +8,9 @@ import 'components/entry.dart';
 import 'components/primary_button.dart';
 
 class EditDetails extends StatefulWidget {
-  const EditDetails({super.key});
+  const EditDetails({super.key, required this.book});
+
+  final PersonalBook book;
 
   @override
   State<EditDetails> createState() => _EditDetailsState();
@@ -37,7 +40,7 @@ class _EditDetailsState extends State<EditDetails> {
                   width: 244,
                   child: Column(
                     children: <Widget>[
-                      // const Entry(),
+                      Entry(book: widget.book.googleBook),
                       Form(
                         key: _formKey,
                         child: Column(
