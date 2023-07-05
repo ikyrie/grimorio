@@ -60,15 +60,17 @@ class _HomeState extends State<Home> {
 }
 
 class _FilledHome extends StatefulWidget {
-  const _FilledHome({required this.listPersonalBook});
+  _FilledHome({required this.listPersonalBook});
 
-  final List<PersonalBook> listPersonalBook;
+  List<PersonalBook> listPersonalBook;
 
   @override
   State<_FilledHome> createState() => _FilledHomeState();
 }
 
 class _FilledHomeState extends State<_FilledHome> {
+  final BookController bookController = BookController();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -100,8 +102,9 @@ class _FilledHomeState extends State<_FilledHome> {
                           book: widget.listPersonalBook[index],
                         ),
                       ),
-                    ).then((value) {
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home()), (route) => false);
+                    ).then((value) async {
+                      widget.listPersonalBook = await bookController.getBooks();
+                      setState(() { });
                     });
                   },
                   child: Image.network(

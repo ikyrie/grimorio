@@ -65,10 +65,16 @@ class _BookDetailsState extends State<BookDetails> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
-                    child: Text(
-                      widget.book.googleBook.description,
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.book.googleBook.description,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
@@ -140,7 +146,11 @@ class _BookDetailsState extends State<BookDetails> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 32.0),
-                    child: Text(widget.book.comments),
+                    child: Row(
+                      children: [
+                        Expanded(child: Text(widget.book.comments)),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
