@@ -89,64 +89,66 @@ class _BooksList extends StatelessWidget {
                         insetPadding: const EdgeInsets.all(16),
                         clipBehavior: Clip.hardEdge,
                         shape: ModalDecorationProperties.modalBorder,
-                        child: Container(
-                          padding: const EdgeInsets.all(32.0),
-                          decoration: ModalDecorationProperties.boxDecoration,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 16.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    InkWell(
-                                      child: const Icon(Icons.close),
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                    )
-                                  ],
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 24.0),
-                                child: DisplayText("Detalhes do Livro"),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 16.0),
-                                child: Image.network(snapshot.data![index].thumbnailLink,
-                                  height: 220,
-                                  width: 144,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(snapshot.data![index].title,
-                                  style: ModalDecorationProperties.bookTitle,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 16.0),
-                                child: SizedBox(
-                                  width: double.maxFinite,
-                                  child: Text(snapshot.data![index].authors,
-                                    style: ModalDecorationProperties.bookAuthor,
+                        child: SingleChildScrollView(
+                          child: Container(
+                            padding: const EdgeInsets.all(32.0),
+                            decoration: ModalDecorationProperties.boxDecoration,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      InkWell(
+                                        child: const Icon(Icons.close),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                      )
+                                    ],
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 24.0),
-                                child: Text(snapshot.data![index].description,
-                                  maxLines: 4,
-                                  overflow: TextOverflow.ellipsis,
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 24.0),
+                                  child: DisplayText("Detalhes do Livro"),
                                 ),
-                              ),
-                              PrimaryButton(text: "Adicionar livro", onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntry(googleBook: snapshot.data![index],)));
-                              })
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: Image.network(snapshot.data![index].thumbnailLink,
+                                    height: 220,
+                                    width: 144,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Text(snapshot.data![index].title,
+                                    style: ModalDecorationProperties.bookTitle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: SizedBox(
+                                    width: double.maxFinite,
+                                    child: Text(snapshot.data![index].authors,
+                                      style: ModalDecorationProperties.bookAuthor,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 24.0),
+                                  child: Text(snapshot.data![index].description,
+                                    maxLines: 4,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                PrimaryButton(text: "Adicionar livro", onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntry(googleBook: snapshot.data![index],)));
+                                })
+                              ],
+                            ),
                           ),
                         ),
                       ),
