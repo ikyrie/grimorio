@@ -101,7 +101,7 @@ class _FilledHomeState extends State<_FilledHome> {
                         ),
                       ),
                     ).then((value) {
-                      setState(() {});
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home()), (route) => false);
                     });
                   },
                   child: Image.network(

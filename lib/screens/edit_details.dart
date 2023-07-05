@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/controllers/book_controller.dart';
 import 'package:grimorio/models/personal_book.dart';
 import 'package:grimorio/screens/components/date_input.dart';
 
@@ -20,6 +21,22 @@ class _EditDetailsState extends State<EditDetails> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController initialDateController = TextEditingController();
   final TextEditingController finalDateController = TextEditingController();
+  final TextEditingController commentsController = TextEditingController();
+  final BookController bookController = BookController();
+
+  @override
+  void initState() {
+    super.initState();
+    if(widget.book.comments != ""){
+      commentsController.text = widget.book.comments;
+    }
+    if(widget.book.dayStarted != ""){
+      initialDateController.text = widget.book.dayStarted;
+    }
+    if(widget.book.dayFinished != ""){
+      finalDateController.text = widget.book.dayFinished;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +73,7 @@ class _EditDetailsState extends State<EditDetails> {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
                               child: TextFormField(
+                                controller: commentsController,
                                 decoration:
                                   InputDecorationProperties.newInputDecoration(
                                   "",
@@ -66,7 +84,11 @@ class _EditDetailsState extends State<EditDetails> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 40.0),
-                              child: PrimaryButton(text: "Salvar", onTap: () {}),
+                              child: PrimaryButton(text: "Salvar", onTap: () {
+                                final PersonalBook newBook = PersonalBook(id: widget.book.id,dayFinished: finalDateController.text, comments: commentsController.text, dayStarted: initialDateController.text, googleBook: widget.book.googleBook);
+                                bookController.updateBook(newBook);
+                                Navigator.pop(context, newBook);
+                              }),
                             ),
                           ],
                         ),

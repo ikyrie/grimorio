@@ -15,6 +15,10 @@ class BookController {
     _dao.save(newPersonalBook);
   }
 
+  void updateBook(PersonalBook personalBook) {
+    _dao.save(personalBook);
+  }
+
   Future<List<PersonalBook>> getBooks() async {
     final List<PersonalBook> list = await _dao.findAll();
     return list;

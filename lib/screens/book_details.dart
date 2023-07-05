@@ -9,9 +9,15 @@ import 'components/secondary_button.dart';
 import 'edit_details.dart';
 import 'home.dart';
 
-class BookDetails extends StatelessWidget {
+class BookDetails extends StatefulWidget {
   BookDetails({super.key, required this.book});
-  final PersonalBook book;
+  PersonalBook book;
+
+  @override
+  State<BookDetails> createState() => _BookDetailsState();
+}
+
+class _BookDetailsState extends State<BookDetails> {
   final BookController bookController = BookController();
 
   @override
@@ -34,7 +40,7 @@ class BookDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Image.network(
-                      book.googleBook.thumbnailLink,
+                      widget.book.googleBook.thumbnailLink,
                       height: 220,
                       width: 144,
                       fit: BoxFit.cover,
@@ -43,7 +49,7 @@ class BookDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      book.googleBook.title,
+                      widget.book.googleBook.title,
                       style: ModalDecorationProperties.bookTitle,
                     ),
                   ),
@@ -52,7 +58,7 @@ class BookDetails extends StatelessWidget {
                     child: SizedBox(
                       width: double.maxFinite,
                       child: Text(
-                        book.googleBook.authors,
+                        widget.book.googleBook.authors,
                         style: ModalDecorationProperties.bookAuthor,
                       ),
                     ),
@@ -60,7 +66,7 @@ class BookDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
                     child: Text(
-                      book.googleBook.description,
+                      widget.book.googleBook.description,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -87,7 +93,7 @@ class BookDetails extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Row(children: <Widget>[
                       Text(
-                        book.dayStarted,
+                        widget.book.dayStarted,
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       )
@@ -115,7 +121,7 @@ class BookDetails extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Row(children: <Widget>[
                       Text(
-                        book.dayFinished,
+                        widget.book.dayFinished,
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       )
@@ -134,7 +140,7 @@ class BookDetails extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 32.0),
-                    child: Text(book.comments),
+                    child: Text(widget.book.comments),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -145,7 +151,15 @@ class BookDetails extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditDetails(book: book,)));
+                                builder: (context) => EditDetails(
+                                      book: widget.book,
+                                    ))).then((value) {
+                          setState(() {
+                            if (value != null) {
+                              widget.book = value;
+                            }
+                          });
+                        });
                       },
                     ),
                   ),
@@ -155,7 +169,7 @@ class BookDetails extends StatelessWidget {
                       icon: Icons.delete,
                       text: "Excluir",
                       onTap: () {
-                        bookController.removeBook(book);
+                        bookController.removeBook(widget.book);
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(builder: (context) => const Home()),
