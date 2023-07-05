@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:grimorio/controllers/book_controller.dart';
-import 'package:grimorio/models/google_book.dart';
-import 'package:grimorio/screens/components/date_input.dart';
-import 'package:grimorio/screens/components/display_text.dart';
-import 'package:grimorio/screens/components/entry.dart';
-import 'package:grimorio/screens/components/primary_button.dart';
-import 'package:grimorio/theme.dart';
+import '../controllers/book_controller.dart';
+import '../models/google_book.dart';
+import 'components/date_input.dart';
+import 'components/display_text.dart';
+import 'components/entry.dart';
+import 'components/primary_button.dart';
+import '../theme.dart';
+
+import 'home.dart';
 
 class NewEntry extends StatefulWidget {
   const NewEntry({super.key, required this.googleBook});
@@ -30,7 +32,9 @@ class _NewEntryState extends State<NewEntry> {
         decoration: AppBackgroundProperties.boxDecoration,
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(backgroundColor: AppColors.black,),
+          appBar: AppBar(
+            backgroundColor: AppColors.black,
+          ),
           body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -53,18 +57,22 @@ class _NewEntryState extends State<NewEntry> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 16.0),
-                              child: DateInput(textController: initialDateController, label: "Início da Leitura"),
+                              child: DateInput(
+                                  textController: initialDateController,
+                                  label: "Início da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
-                              child: DateInput(textController: finalDateController, label: "Final da Leitura"),
+                              child: DateInput(
+                                  textController: finalDateController,
+                                  label: "Final da Leitura"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24.0),
                               child: TextFormField(
                                 controller: commentsController,
-                                decoration:
-                                  InputDecorationProperties.newInputDecoration(
+                                decoration: InputDecorationProperties
+                                    .newInputDecoration(
                                   "",
                                   "Comentários",
                                 ),
@@ -73,9 +81,22 @@ class _NewEntryState extends State<NewEntry> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 40.0),
-                              child: PrimaryButton(text: "Adicionar", onTap: () {
-                                bookController.addBook(widget.googleBook, initialDateController.text, finalDateController.text, commentsController.text);
-                              }),
+                              child: PrimaryButton(
+                                  text: "Adicionar",
+                                  onTap: () {
+                                    bookController.addBook(
+                                        widget.googleBook,
+                                        initialDateController.text,
+                                        finalDateController.text,
+                                        commentsController.text);
+
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Home()),
+                                      (_) => false,
+                                    );
+                                  }),
                             ),
                           ],
                         ),

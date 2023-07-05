@@ -59,11 +59,16 @@ class _HomeState extends State<Home> {
   }
 }
 
-class _FilledHome extends StatelessWidget {
+class _FilledHome extends StatefulWidget {
   const _FilledHome({required this.listPersonalBook});
 
   final List<PersonalBook> listPersonalBook;
 
+  @override
+  State<_FilledHome> createState() => _FilledHomeState();
+}
+
+class _FilledHomeState extends State<_FilledHome> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -79,7 +84,7 @@ class _FilledHome extends StatelessWidget {
                 ),
               ),
               SliverGrid.builder(
-                itemCount: listPersonalBook.length,
+                itemCount: widget.listPersonalBook.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisExtent: 167,
@@ -89,13 +94,18 @@ class _FilledHome extends StatelessWidget {
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                BookDetails(book: listPersonalBook[index])));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookDetails(
+                          book: widget.listPersonalBook[index],
+                        ),
+                      ),
+                    ).then((value) {
+                      setState(() {});
+                    });
                   },
                   child: Image.network(
-                    listPersonalBook[index].googleBook.thumbnailLink,
+                    widget.listPersonalBook[index].googleBook.thumbnailLink,
                     height: 220,
                     width: 144,
                     fit: BoxFit.cover,
