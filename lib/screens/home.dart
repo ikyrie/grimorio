@@ -91,7 +91,8 @@ class _FilledHome extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const BookDetails()));
+                            builder: (context) =>
+                                BookDetails(book: listPersonalBook[index])));
                   },
                   child: Image.network(
                     listPersonalBook[index].googleBook.thumbnailLink,

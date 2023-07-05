@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grimorio/models/personal_book.dart';
 import 'package:grimorio/screens/components/secondary_button.dart';
 import 'package:grimorio/screens/edit_details.dart';
 
@@ -7,7 +8,9 @@ import 'components/display_text.dart';
 import 'components/primary_button.dart';
 
 class BookDetails extends StatelessWidget {
-  const BookDetails({super.key});
+  const BookDetails({super.key, required this.book});
+
+  final PersonalBook book;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class BookDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Image.network(
-                      "https://i.pinimg.com/736x/88/cb/ba/88cbba5cdbd59fa49462ab96f3b1b79c.jpg",
+                     book.googleBook.thumbnailLink,
                       height: 220,
                       width: 144,
                       fit: BoxFit.cover,
@@ -38,7 +41,7 @@ class BookDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "Singer and dancer at Twice. Very talented and sweet person.",
+                     book.googleBook.title,
                       style: ModalDecorationProperties.bookTitle,
                     ),
                   ),
@@ -47,15 +50,15 @@ class BookDetails extends StatelessWidget {
                     child: SizedBox(
                       width: double.maxFinite,
                       child: Text(
-                        "Jihyo",
+                        book.googleBook.authors,
                         style: ModalDecorationProperties.bookAuthor,
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 24.0),
+                   Padding(
+                    padding: const EdgeInsets.only(bottom: 24.0),
                     child: Text(
-                      "Very words so I can test the ammount of words I can put in here until the modal breaks. I need this test also to test if I can put an scrollable action. If I can't put a scrollable action here I'm in big trouble. Please let me put a scroll into a Dialog.",
+                     book.googleBook.description,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -70,9 +73,9 @@ class BookDetails extends StatelessWidget {
                       Text("Inicio da Leitura", style: TextStyle(color: AppColors.mediumPink),),
                     ],),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Row(children: <Widget>[Text("08/11/2023", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
+                   Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Row(children: <Widget>[Text(book.dayStarted, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -84,9 +87,9 @@ class BookDetails extends StatelessWidget {
                       Text("Final da Leitura", style: TextStyle(color: AppColors.mediumPink),),
                     ],),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 16.0),
-                    child: Row(children: <Widget>[Text("08/12/2023", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
+                   Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Row(children: <Widget>[Text(book.dayFinished, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),)]),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -96,9 +99,9 @@ class BookDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 32.0),
-                    child: Text('"1984" de George Orwell é uma obra-prima distópica que continua a ser relevante. Sua representação sombria de um estado totalitário é assustadoramente realista e serve como um lembrete sobre o poder da manipulação e vigilância governamental. É um livro impactante que nos faz refletir sobre os perigos da perda da liberdade e da manipulação da verdade.'),
+                   Padding(
+                    padding: const EdgeInsets.only(bottom: 32.0),
+                    child: Text(book.comments),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -107,7 +110,7 @@ class BookDetails extends StatelessWidget {
                       text: "Editar",
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => EditDetails()));
+                            MaterialPageRoute(builder: (context) => const EditDetails()));
                       },
                     ),
                   ),
